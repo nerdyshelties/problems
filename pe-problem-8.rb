@@ -1,0 +1,44 @@
+#Create large string for 1000 digit number
+big_num = "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450"
+big_num = big_num.split(//) #split big_num single string into 1000 string array
+#Set all variables
+a = 0 #set variable for big_num slice start position
+b = 1 #variable for product
+c = 0 #variable for integer array position
+d = 0 #variable for latest value of product to test
+y = Array.new #empty array for each slice of integer
+z = Array.new #empty array few each slice of strings
+#slice off section of big_num to test for product
+while a < 990 do
+	z = big_num.slice(a,13) #populate with slice of string to test
+	a += 1
+	y.push(z[0].to_i)
+	y.push(z[1].to_i)
+	y.push(z[2].to_i)
+	y.push(z[3].to_i)
+	y.push(z[4].to_i)
+	y.push(z[5].to_i)
+	y.push(z[6].to_i)
+	y.push(z[7].to_i)
+	y.push(z[8].to_i)
+	y.push(z[9].to_i)
+	y.push(z[10].to_i)
+	y.push(z[11].to_i)
+	y.push(z[12].to_i)
+	y.each {|x| b *= x} #each stmt to iterate through integer and get product
+	if b > d
+		d = b
+		puts "The largest product is #{d} obtained from sequence #{y}"
+		y = Array.new
+		b = 1
+	else
+		b = 1
+		y = Array.new
+	end
+end
+
+#Largest product in a series
+#Problem 8
+#The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
+#Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
+
